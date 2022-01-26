@@ -1,0 +1,19 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "An API from Jonas Schmedtmann's course, in which he teaches Node.js, Express and MongoDB.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiagoPassafiume/Natours.git"
+  },
+  "author": "Santiago Passafiume",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantiagoPassafiume/Natours/issues"
+  },
+  "homepage": "https://github.com/SantiagoPassafiume/Natours#readme"
+}
