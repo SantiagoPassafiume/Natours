@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SantiagoPassafiume/Natours/issues"
   },
-  "homepage": "https://github.com/SantiagoPassafiume/Natours#readme"
+  "homepage": "https://github.com/SantiagoPassafiume/Natours#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
