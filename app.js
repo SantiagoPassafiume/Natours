@@ -4,13 +4,13 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// #########################################
-//  ROUTES
-// #########################################
-
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
+
+// #########################################
+//  ROUTES
+// #########################################
 
 app.get('/api/v1/tours', (req, res) => {
   res.status(200).json({
