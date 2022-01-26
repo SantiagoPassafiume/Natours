@@ -2,6 +2,7 @@ const fs = require('fs');
 const express = require('express');
 
 const app = express();
+// Middleware required to receive post data.
 app.use(express.json());
 const port = 3000;
 
