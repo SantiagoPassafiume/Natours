@@ -7,6 +7,7 @@ const app = express();
 //
 // It needs to come BEFORE the routes, if not, it'll not execute.
 // That's why this "global" middleware is usually written BEFORE all route handlers.
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -19,6 +20,10 @@ const port = 3000;
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
+
+// #########################################
+//  ROUTE HANDLERS
+// #########################################
 
 const getAllTours = (req, res) => {
   console.log(req.requestTime);
