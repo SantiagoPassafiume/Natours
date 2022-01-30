@@ -3,7 +3,16 @@ const express = require('express');
 
 const app = express();
 // Middleware required to receive post data.
+//
+// It needs to come BEFORE the routes, if not, it'll not execute.
+// That's why this "global" middleware is usually written BEFORE all route handlers.
 app.use(express.json());
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+});
+
 const port = 3000;
 
 const tours = JSON.parse(
@@ -11,8 +20,10 @@ const tours = JSON.parse(
 );
 
 const getAllTours = (req, res) => {
+  console.log(req.requestTime);
   res.status(200).json({
     status: 'success',
+    requestedAt: req.requestTime,
     result: tours.length,
     data: {
       tours: tours,
