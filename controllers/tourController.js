@@ -4,6 +4,18 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
+exports.checkID = (req, res, next, val) => {
+  console.log(`Tour id is: ${val}`);
+  if (req.params.id * 1 > tours.length || req.params.id * 1 < 0) {
+    // The return statement here is needed because otherwise we'd be sending the headers twice (which is not allowed).
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+  }
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   console.log(req.requestTime);
   res.status(200).json({
@@ -20,13 +32,6 @@ exports.getTour = (req, res) => {
   console.log(req.params);
   // Convert string to number.
   const id = req.params.id * 1;
-
-  if (id > tours.length || id < 0) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID',
-    });
-  }
 
   const tour = tours.find((el) => el.id === id);
 
@@ -58,12 +63,6 @@ exports.createTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  if (req.params.id * 1 > tours.length || req.params.id * 1 < 0) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID',
-    });
-  }
   res.status(200).json({
     status: 'success',
     data: { tour: '<Updated tour here...>' },
@@ -71,12 +70,6 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
-  if (req.params.id * 1 > tours.length || req.params.id * 1 < 0) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID',
-    });
-  }
   res.status(204).json({
     status: 'success',
     data: null,
