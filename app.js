@@ -9,7 +9,11 @@ const app = express();
 //
 // It needs to come BEFORE the routes, if not, it'll not execute.
 // That's why this "global" middleware is usually written BEFORE all route handlers.
-app.use(morgan('dev'));
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(express.json());
 
 app.use((req, res, next) => {
